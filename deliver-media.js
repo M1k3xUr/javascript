@@ -35,13 +35,12 @@ function deliverMedia(theURL){
                       el.setAttribute('target', '_blank');
                       break;
                   case 'div':
-                      // if(el.hasAttribute('style')){
-                      //     if(el.style.backgroundImage != '')
-                      //     var oldlnk = el.getAttribute('style','background-image');
-                      //     oldlnk.replace(`/^url\(['"]http:\/\/203.0.0.1:\d{5}(.+)['"]\)/`, '$1');
-                      //     el.style.backgroundImage = 'url(' + lnk + oldlnk +')';
-                      //     console.log('Hello' + oldlnk);               
-                      // }
+                      if(el.hasAttribute('style')){
+                          if(el.style.backgroundImage != '')
+                            var oldlnk = el.style.backgroundImage;
+                            var opb = oldlnk.match(/url\(["']?(.*?)["']?\)/)[1];
+                            el.style.backgroundImage = `url('${lnk + opb}')`;               
+                      }
                       break;
               
                   default:
