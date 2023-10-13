@@ -36,10 +36,13 @@ function deliverMedia(theURL){
                       break;
                   case 'div':
                       if(el.hasAttribute('style')){
-                          if(el.style.backgroundImage != '')
+                          if(el.style.backgroundImage != ''){
                             var oldlnk = el.style.backgroundImage;
-                            var opb = oldlnk.match(/url\(["']?(.*?)["']?\)/)[1];
-                            el.style.backgroundImage = `url('${lnk + opb}')`;               
+                            if(oldlnk){
+                                var opb = oldlnk.match(/url\(["']?(.*?)["']?\)/)[1];
+                            }
+                            el.style.backgroundImage = `url('${lnk + opb}')`;
+                        }               
                       }
                       break;
               
